@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
 
 function App() {
+
+  useEffect(() => {
+    try {
+      loadData()      
+    } catch (error) {
+      console.log('ERROR', error)
+    }
+  }, [])
+
+  const loadData = async () => {
+    const { data } = await axios.get('/api')
+    console.log('HERERE ', data)
+  }
+
   return (
     <div className="App">
       <header className="App-header">
