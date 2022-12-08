@@ -15,7 +15,7 @@ function App() {
 
   const loadData = async () => {
     const { data } = await axios.get('/api')
-    console.log('HERERE ', data)
+    console.log('DATA ', data)
   }
 
   return (
