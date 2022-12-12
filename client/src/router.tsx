@@ -6,7 +6,7 @@ export function Router() {
     <BrowserRouter>
       <Routes>
         <Route index element={<Landing />} />
-        <Route path='form' element={<Form />} />
+        <Route path='analyze' element={<Form />} />
       </Routes>
     </BrowserRouter>
   )

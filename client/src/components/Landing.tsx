@@ -24,9 +24,7 @@ export function Landing() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <h1>Property Analyzer</h1>  
-      <Stack spacing={2} direction="row">
-        <Button onClick={() => navigate('form')} variant="contained">Contained</Button>
-      </Stack>
+      <Button onClick={() => navigate('analyze')} variant="contained">Begin</Button>
     </Box>
   );
 }
