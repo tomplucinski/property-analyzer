@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+import { useEffect, useState } from 'react'
+import Box from '@mui/material/Box'
+import TextField from '@mui/material/TextField'
+import Typography from '@mui/material/Typography'
+import Button from '@mui/material/Button'
 
 export function Form() {
   const [income, setIncome] = useState<number>(0)
@@ -58,33 +58,54 @@ export function Form() {
   return (
     <Box
       component="form"
-      sx={{
-        '& > :not(style)': { m: 1, width: '25ch' },
-      }}
+      sx={{ m: 1, width: '25ch' }}
       noValidate
       autoComplete="off"
     >
-      <div>Calculate Net Operating Income</div>
-      <div>Monthly property income:</div>
-      <TextField id="outlined-basic" label="Income" variant="outlined" onChange={handleIncomeChange}/>
+      <Typography>Calculate Net Operating Income</Typography>
+      <Typography>Monthly property income:</Typography>
+      <TextField
+        id="outlined-basic"
+        label="Income"
+        variant="outlined"
+        onChange={handleIncomeChange}
+      />
 
-      <div>Monthly operating expenses:</div>
-      <TextField id="outlined-basic" label="Expenses" variant="outlined" onChange={handleExpensesChange}/>
+      <Typography>Monthly operating expenses:</Typography>
+      <TextField
+        id="outlined-basic"
+        label="Expenses"
+        variant="outlined"
+        onChange={handleExpensesChange}
+      />
 
       <Typography mt={2}>NOI: {noi}</Typography>
 
-      <div>Calculate Cash Flow</div>
-      <div>Monthly debt payments:</div>
-      <TextField id="outlined-basic" label="Debt" variant="outlined" onChange={handleDebtChange}/>
+      <Typography>Calculate Cash Flow</Typography>
+      <Typography>Monthly debt payments:</Typography>
+      <TextField
+        id="outlined-basic"
+        label="Debt"
+        variant="outlined"
+        onChange={handleDebtChange}
+      />
 
-      <div>Monthly reserve payment for CapEx:</div>
-      <TextField id="outlined-basic" label="CapEx" variant="outlined" onChange={handleCapExChange}/>
+      <Typography>Monthly reserve payment for CapEx:</Typography>
+      <TextField
+        id="outlined-basic"
+        label="CapEx"
+        variant="outlined"
+        onChange={handleCapExChange}
+      />
 
       <Typography mt={2}>Monthly Cash Flow: {cashFlow}</Typography>
 
-      <Button onClick={() => console.log('link')} variant="outlined">Add link</Button>
-      <Button onClick={() => console.log('save')} variant="contained">Save analysis</Button>
-
+      <Button onClick={() => console.log('link')} variant="outlined">
+        Add link
+      </Button>
+      <Button onClick={() => console.log('save')} variant="contained">
+        Save analysis
+      </Button>
     </Box>
   )
 }
