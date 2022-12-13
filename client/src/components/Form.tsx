@@ -11,6 +11,8 @@ export function Form() {
   const [capExPayment, setCapExPayment] = useState<number>(0)
   const [noi, setNoi] = useState<number>(0)
   const [cashFlow, setCashFlow] = useState<number>(0)
+  const [homeValue, setHomeValue] = useState<number>(0)
+  const [capRate, setCapRate] = useState<number>(0)
   const reg = new RegExp('^[0-9]+$')
 
   useEffect(() => {
@@ -22,6 +24,13 @@ export function Form() {
     const cFlow = noi - debtPayment - capExPayment
     setCashFlow(cFlow)
   }, [noi, debtPayment, capExPayment])
+
+  useEffect(() => {
+    if (homeValue && noi) {
+      const cRate = noi / homeValue
+      setCapRate(cRate)
+    }
+  }, [noi, homeValue])
 
   const handleIncomeChange = (e: any) => {
     if (reg.test(e.target.value)) {
@@ -55,50 +64,55 @@ export function Form() {
     }
   }
 
+  const handleHomeValueChange = (e: any) => {
+    if (reg.test(e.target.value)) {
+      setHomeValue(parseInt(e.target.value))
+    } else {
+      setHomeValue(0)
+    }
+  }
+
   return (
-    <Box
-      component="form"
-      sx={{ m: 1, width: '25ch' }}
-      noValidate
-      autoComplete="off"
-    >
-      <Typography>Calculate Net Operating Income</Typography>
-      <Typography>Monthly property income:</Typography>
+    <Box component="form" sx={{ m: 1, width: '25ch' }}>
+      <Typography>Monthly Net Operating Income</Typography>
       <TextField
         id="outlined-basic"
-        label="Income"
+        label="Property income"
         variant="outlined"
         onChange={handleIncomeChange}
       />
-
-      <Typography>Monthly operating expenses:</Typography>
       <TextField
         id="outlined-basic"
-        label="Expenses"
+        label="Property expenses"
         variant="outlined"
         onChange={handleExpensesChange}
       />
-
       <Typography mt={2}>NOI: {noi}</Typography>
 
-      <Typography>Calculate Cash Flow</Typography>
-      <Typography>Monthly debt payments:</Typography>
+      <Typography>Monthly Cash Flow</Typography>
       <TextField
         id="outlined-basic"
-        label="Debt"
+        label="Debt payments"
         variant="outlined"
         onChange={handleDebtChange}
       />
-
-      <Typography>Monthly reserve payment for CapEx:</Typography>
       <TextField
         id="outlined-basic"
-        label="CapEx"
+        label="CapEx payments"
         variant="outlined"
         onChange={handleCapExChange}
       />
 
       <Typography mt={2}>Monthly Cash Flow: {cashFlow}</Typography>
+
+      <TextField
+        id="outlined-basic"
+        label="Home market value"
+        variant="outlined"
+        onChange={handleHomeValueChange}
+      />
+
+      <Typography mt={2}>Cap Rate: {capRate}</Typography>
 
       <Button onClick={() => console.log('link')} variant="outlined">
         Add link
