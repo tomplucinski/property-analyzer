@@ -1,16 +1,15 @@
-import React, { useEffect } from 'react';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
-import axios from 'axios';
-import Box from '@mui/material/Box';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react'
+import Button from '@mui/material/Button'
+import axios from 'axios'
+import Box from '@mui/material/Box'
+import { useNavigate } from 'react-router-dom'
 
 export function Landing() {
   const navigate = useNavigate()
 
   useEffect(() => {
     try {
-      loadData()      
+      loadData()
     } catch (error) {
       console.log('ERROR', error)
     }
@@ -23,8 +22,10 @@ export function Landing() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <h1>Property Analyzer</h1>  
-      <Button onClick={() => navigate('analyze')} variant="contained">Begin</Button>
+      <h1>Property Analyzer</h1>
+      <Button onClick={() => navigate('analyze')} variant="contained">
+        Begin
+      </Button>
     </Box>
-  );
+  )
 }
