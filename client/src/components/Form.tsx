@@ -3,7 +3,6 @@ import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
-import Autocomplete from '@mui/material/Autocomplete'
 
 export function Form() {
   const [income, setIncome] = useState<number>(0)
@@ -73,16 +72,19 @@ export function Form() {
     }
   }
 
-  const options = {
-    componentRestrictions: { country: 'us' },
-    fields: ['address_components', 'geometry', 'icon', 'name'],
-    strictBounds: false,
-    types: ['establishment'],
-  }
-
-  const handleAutoComplete = (input: any) => {
-    const autocomplete = new google.maps.places.Autocomplete(input, options)
-    return <TextField {...autocomplete} label="address" />
+  const handleAutoComplete = (e: any) => {
+    try {
+      const input = e.target.value
+      const autocompleteService = new google.maps.places.AutocompleteService()
+      autocompleteService.getPlacePredictions(
+        { input, componentRestrictions: { country: 'us' } },
+        (data) => {
+          console.log('HERERE', data)
+        },
+      )
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   return (
@@ -131,24 +133,10 @@ export function Form() {
         id="outlined-basic"
         label="Address"
         variant="outlined"
-        onChange={handleHomeValueChange}
-      />
-      <TextField
-        id="outlined-basic"
-        label="City"
-        variant="outlined"
-        onChange={handleHomeValueChange}
+        onChange={handleAutoComplete}
       />
 
       <Typography mt={2}>Cap Rate: {capRate}</Typography>
-
-      <Autocomplete
-        disablePortal
-        id="address"
-        options={[]}
-        sx={{ width: 300 }}
-        renderInput={handleAutoComplete}
-      />
 
       <Button onClick={() => console.log('link')} variant="outlined">
         Add link
