@@ -3,72 +3,125 @@ import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
+import Autocomplete from '@mui/material/Autocomplete'
 
 export function Form() {
-  const [income, setIncome] = useState<number>(0)
-  const [expenses, setExpenses] = useState<number>(0)
-  const [debtPayment, setDebtPayment] = useState<number>(0)
-  const [capExPayment, setCapExPayment] = useState<number>(0)
-  const [noi, setNoi] = useState<number>(0)
-  const [cashFlow, setCashFlow] = useState<number>(0)
-  const [homeValue, setHomeValue] = useState<number>(0)
-  const [capRate, setCapRate] = useState<number>(0)
+  const [state, setState] = useState({
+    income: 0,
+    expenses: 0,
+    debtPayment: 0,
+    capExPayment: 0,
+    noi: 0,
+    cashFlow: 0,
+    homeValue: 0,
+    capRate: 0,
+  })
+  const {
+    income,
+    expenses,
+    debtPayment,
+    capExPayment,
+    noi,
+    cashFlow,
+    homeValue,
+    capRate,
+  } = state
+  const [options, setOptions] = useState<string[]>([])
   const reg = new RegExp('^[0-9]+$')
 
   useEffect(() => {
-    const netOperatingIncome = income - expenses
-    setNoi(netOperatingIncome)
+    const noi = income - expenses
+    setState({
+      ...state,
+      noi,
+    })
   }, [income, expenses])
 
   useEffect(() => {
-    const cFlow = noi - debtPayment - capExPayment
-    setCashFlow(cFlow)
+    const cashFlow = noi - debtPayment - capExPayment
+    setState({
+      ...state,
+      cashFlow,
+    })
   }, [noi, debtPayment, capExPayment])
 
   useEffect(() => {
     if (homeValue && noi) {
-      const cRate = noi / homeValue
-      setCapRate(cRate)
+      const capRate = noi / homeValue
+      setState({
+        ...state,
+        capRate,
+      })
     }
   }, [noi, homeValue])
 
   const handleIncomeChange = (e: any) => {
     if (reg.test(e.target.value)) {
-      setIncome(parseInt(e.target.value))
+      setState({
+        ...state,
+        income: parseInt(e.target.value),
+      })
     } else {
-      setIncome(0)
+      setState({
+        ...state,
+        income: 0,
+      })
     }
   }
 
   const handleExpensesChange = (e: any) => {
     if (reg.test(e.target.value)) {
-      setExpenses(parseInt(e.target.value))
+      setState({
+        ...state,
+        expenses: parseInt(e.target.value),
+      })
     } else {
-      setExpenses(0)
+      setState({
+        ...state,
+        expenses: 0,
+      })
     }
   }
 
   const handleDebtChange = (e: any) => {
     if (reg.test(e.target.value)) {
-      setDebtPayment(parseInt(e.target.value))
+      setState({
+        ...state,
+        debtPayment: parseInt(e.target.value),
+      })
     } else {
-      setDebtPayment(0)
+      setState({
+        ...state,
+        debtPayment: 0,
+      })
     }
   }
 
   const handleCapExChange = (e: any) => {
     if (reg.test(e.target.value)) {
-      setCapExPayment(parseInt(e.target.value))
+      setState({
+        ...state,
+        capExPayment: parseInt(e.target.value),
+      })
     } else {
-      setCapExPayment(0)
+      setState({
+        ...state,
+        capExPayment: 0,
+      })
     }
   }
 
   const handleHomeValueChange = (e: any) => {
     if (reg.test(e.target.value)) {
-      setHomeValue(parseInt(e.target.value))
+      setState({
+        ...state,
+        homeValue: parseInt(e.target.value),
+      })
     } else {
-      setHomeValue(0)
+      setState({
+        ...state,
+        homeValue: 0,
+      })
     }
   }
 
@@ -79,13 +132,19 @@ export function Form() {
       autocompleteService.getPlacePredictions(
         { input, componentRestrictions: { country: 'us' } },
         (data) => {
-          console.log('HERERE', data)
+          if (data?.length) {
+            const formattedData = data.map((d) => d.description)
+            setOptions(formattedData)
+          }
+          return <TextField {...input} label="address" />
         },
       )
     } catch (error) {
       console.error(error)
     }
   }
+
+  console.log('HERERE', options)
 
   return (
     <Box component="form" sx={{ m: 1, width: '25ch' }}>
@@ -134,6 +193,14 @@ export function Form() {
         label="Address"
         variant="outlined"
         onChange={handleAutoComplete}
+      />
+
+      <Autocomplete
+        disablePortal
+        id="address"
+        options={options}
+        sx={{ width: 300 }}
+        renderInput={(params) => <TextField {...params} label="address" />}
       />
 
       <Typography mt={2}>Cap Rate: {capRate}</Typography>
