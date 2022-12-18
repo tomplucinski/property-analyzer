@@ -3,7 +3,6 @@ import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
-import Autocomplete from '@mui/material/Autocomplete'
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete'
 
 export function Form() {
@@ -127,6 +126,10 @@ export function Form() {
     }
   }
 
+  const handleSave = () => {
+    console.log(state, address)
+  }
+
   return (
     <Box component="form" sx={{ m: 1, width: '25ch' }}>
       <Typography>Monthly Net Operating Income</Typography>
@@ -181,7 +184,7 @@ export function Form() {
       <Button onClick={() => console.log('link')} variant="outlined">
         Add link
       </Button>
-      <Button onClick={() => console.log('save')} variant="contained">
+      <Button onClick={handleSave} variant="contained">
         Save analysis
       </Button>
     </Box>
