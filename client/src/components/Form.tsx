@@ -4,6 +4,7 @@ import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import Autocomplete from '@mui/material/Autocomplete'
+import GooglePlacesAutocomplete from 'react-google-places-autocomplete'
 
 export function Form() {
   const [state, setState] = useState({
@@ -26,7 +27,8 @@ export function Form() {
     homeValue,
     capRate,
   } = state
-  const [options, setOptions] = useState<string[]>([])
+  const [address, setAddress] = useState(null)
+
   const reg = new RegExp('^[0-9]+$')
 
   useEffect(() => {
@@ -125,27 +127,6 @@ export function Form() {
     }
   }
 
-  const handleAutoComplete = (e: any) => {
-    try {
-      const input = e.target.value
-      const autocompleteService = new google.maps.places.AutocompleteService()
-      autocompleteService.getPlacePredictions(
-        { input, componentRestrictions: { country: 'us' } },
-        (data) => {
-          if (data?.length) {
-            const formattedData = data.map((d) => d.description)
-            setOptions(formattedData)
-          }
-          return <TextField {...input} label="address" />
-        },
-      )
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
-  console.log('HERERE', options)
-
   return (
     <Box component="form" sx={{ m: 1, width: '25ch' }}>
       <Typography>Monthly Net Operating Income</Typography>
@@ -186,24 +167,16 @@ export function Form() {
         onChange={handleHomeValueChange}
       />
 
-      <Typography mt={2}>Property location</Typography>
-
-      <TextField
-        id="outlined-basic"
-        label="Address"
-        variant="outlined"
-        onChange={handleAutoComplete}
-      />
-
-      <Autocomplete
-        disablePortal
-        id="address"
-        options={options}
-        sx={{ width: 300 }}
-        renderInput={(params) => <TextField {...params} label="address" />}
-      />
-
       <Typography mt={2}>Cap Rate: {capRate}</Typography>
+
+      <Typography mt={2}>Address</Typography>
+      <GooglePlacesAutocomplete
+        apiKey={process.env.REACT_APP_PLACES_API_KEY}
+        selectProps={{
+          address,
+          onChange: setAddress,
+        }}
+      />
 
       <Button onClick={() => console.log('link')} variant="outlined">
         Add link
