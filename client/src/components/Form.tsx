@@ -132,54 +132,60 @@ export function Form() {
 
   return (
     <Box component="form" sx={{ m: 1, width: '25ch' }}>
-      <Typography>Monthly Net Operating Income</Typography>
-      <TextField
-        id="outlined-basic"
-        label="Property income"
-        variant="outlined"
-        onChange={handleIncomeChange}
-      />
-      <TextField
-        id="outlined-basic"
-        label="Property expenses"
-        variant="outlined"
-        onChange={handleExpensesChange}
-      />
-      <Typography mt={2}>NOI: {noi}</Typography>
+      <Box sx={{ marginBottom: '20px' }}>
+        <TextField
+          id="outlined-basic"
+          label="Property income"
+          variant="outlined"
+          onChange={handleIncomeChange}
+        />
+        <TextField
+          id="outlined-basic"
+          label="Property expenses"
+          variant="outlined"
+          onChange={handleExpensesChange}
+        />
+        <Typography mt={2}>Net Operating Income: {noi}</Typography>
+      </Box>
 
-      <Typography>Monthly Cash Flow</Typography>
-      <TextField
-        id="outlined-basic"
-        label="Debt payments"
-        variant="outlined"
-        onChange={handleDebtChange}
-      />
-      <TextField
-        id="outlined-basic"
-        label="CapEx payments"
-        variant="outlined"
-        onChange={handleCapExChange}
-      />
+      <Box sx={{ marginBottom: '20px' }}>
+        <TextField
+          id="outlined-basic"
+          label="Debt payments"
+          variant="outlined"
+          onChange={handleDebtChange}
+        />
+        <TextField
+          id="outlined-basic"
+          label="CapEx payments"
+          variant="outlined"
+          onChange={handleCapExChange}
+        />
 
-      <Typography mt={2}>Monthly Cash Flow: {cashFlow}</Typography>
+        <Typography mt={2}>Monthly Cash Flow: {cashFlow}</Typography>
+      </Box>
 
-      <TextField
-        id="outlined-basic"
-        label="Home market value"
-        variant="outlined"
-        onChange={handleHomeValueChange}
-      />
+      <Box sx={{ marginBottom: '20px' }}>
+        <TextField
+          id="outlined-basic"
+          label="Home market value"
+          variant="outlined"
+          onChange={handleHomeValueChange}
+        />
 
-      <Typography mt={2}>Cap Rate: {capRate}</Typography>
+        <Typography mt={2}>Cap Rate: {capRate}</Typography>
+      </Box>
 
-      <Typography mt={2}>Address</Typography>
-      <GooglePlacesAutocomplete
-        apiKey={process.env.REACT_APP_PLACES_API_KEY}
-        selectProps={{
-          address,
-          onChange: setAddress,
-        }}
-      />
+      <Box sx={{ marginBottom: '20px' }}>
+        <Typography mt={2}>Property location</Typography>
+        <GooglePlacesAutocomplete
+          apiKey={process.env.REACT_APP_PLACES_API_KEY}
+          selectProps={{
+            address,
+            onChange: (a: any) => setAddress(a.label),
+          }}
+        />
+      </Box>
 
       <Button onClick={() => console.log('link')} variant="outlined">
         Add link
