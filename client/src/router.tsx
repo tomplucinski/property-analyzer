@@ -1,13 +1,14 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Form, Landing, Navbar } from './components'
+import { Form, Landing, Layout } from './components'
 
 export function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<Landing />} />
-        <Route path="/" element={<Navbar />} />
-        <Route path="analyze" element={<Form />} />
+        <Route element={<Layout />}>
+          <Route index element={<Landing />} />
+          <Route path="analyze" element={<Form />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   )
