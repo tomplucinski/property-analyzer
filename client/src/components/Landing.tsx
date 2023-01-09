@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import Button from '@mui/material/Button'
 import axios from 'axios'
 import Box from '@mui/material/Box'
 import { useNavigate } from 'react-router-dom'
+import pic from '../images/landing.jpg'
+import { height } from '@mui/system'
 
 export function Landing() {
   const navigate = useNavigate()
@@ -21,11 +23,39 @@ export function Landing() {
   }
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        backgroundImage: `url(${pic})`,
+        height: '100vh',
+      }}
+    >
       <h1>Property Analyzer</h1>
-      <Button onClick={() => navigate('analyze')} variant="contained">
-        Begin
-      </Button>
+      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+        <Button
+          sx={{ marginBottom: '10px' }}
+          onClick={() => navigate('analyze')}
+          variant="contained"
+        >
+          log in
+        </Button>
+        <Button
+          sx={{ marginBottom: '10px' }}
+          onClick={() => navigate('analyze')}
+          variant="contained"
+        >
+          sign Up
+        </Button>
+        <Button
+          sx={{ marginBottom: '10px' }}
+          onClick={() => navigate('analyze')}
+          variant="contained"
+        >
+          continue as guest
+        </Button>
+      </Box>
     </Box>
   )
 }
