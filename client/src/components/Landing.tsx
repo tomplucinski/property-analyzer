@@ -4,7 +4,6 @@ import axios from 'axios'
 import Box from '@mui/material/Box'
 import { useNavigate } from 'react-router-dom'
 import pic from '../images/landing.jpg'
-import { height } from '@mui/system'
 
 export function Landing() {
   const navigate = useNavigate()
@@ -28,10 +27,13 @@ export function Landing() {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        backgroundImage: `url(${pic})`,
-        height: '100vh',
       }}
     >
+      <img
+        src={pic}
+        alt="landing"
+        style={{ position: 'absolute', height: '100vh' }}
+      />
       <h1>Property Analyzer</h1>
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <Button
