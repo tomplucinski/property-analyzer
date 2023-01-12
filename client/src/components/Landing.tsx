@@ -1,25 +1,10 @@
-import { useEffect } from 'react'
 import Button from '@mui/material/Button'
-import axios from 'axios'
 import Box from '@mui/material/Box'
 import { useNavigate } from 'react-router-dom'
 import pic from '../images/landing.jpg'
 
 export function Landing() {
   const navigate = useNavigate()
-
-  useEffect(() => {
-    try {
-      loadData()
-    } catch (error) {
-      console.log('ERROR', error)
-    }
-  }, [])
-
-  const loadData = async () => {
-    const { data } = await axios.get('/api')
-    console.log('DATA ', data)
-  }
 
   return (
     <Box
