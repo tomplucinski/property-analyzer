@@ -2,6 +2,7 @@ import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
 import { useNavigate } from 'react-router-dom'
 import pic from '../images/landing.jpg'
+import { LoginButton } from '.'
 
 export function Landing() {
   const navigate = useNavigate()
@@ -21,13 +22,7 @@ export function Landing() {
       />
       <h1>Property Analyzer</h1>
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-        <Button
-          sx={{ marginBottom: '10px' }}
-          onClick={() => navigate('analyze')}
-          variant="contained"
-        >
-          log in
-        </Button>
+        <LoginButton />
         <Button
           sx={{ marginBottom: '10px' }}
           onClick={() => navigate('analyze')}
