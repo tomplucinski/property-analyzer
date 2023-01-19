@@ -11,7 +11,9 @@ root.render(
   <Auth0Provider
     domain={process.env.REACT_APP_OAUTH_DOMAIN || ''}
     clientId={process.env.REACT_APP_OAUTH_CLIENT_ID || ''}
-    redirectUri="http://localhost:3000/home"
+    authorizationParams={{
+      redirect_uri: 'http://localhost:3000/analyze',
+    }}
   >
     <Provider store={store}>
       <React.StrictMode>
