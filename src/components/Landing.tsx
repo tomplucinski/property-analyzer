@@ -13,13 +13,13 @@ export function Landing() {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        backgroundImage: `url(${pic})`,
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        height: '94vh',
       }}
     >
-      <img
-        src={pic}
-        alt="landing"
-        style={{ position: 'absolute', height: '100vh' }}
-      />
       <h1>Property Analyzer</h1>
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <LoginButton />
