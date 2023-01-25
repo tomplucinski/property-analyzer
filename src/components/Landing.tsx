@@ -20,7 +20,7 @@ export function Landing() {
         height: '94vh',
       }}
     >
-      <h1>Property Analyzer</h1>
+      <h1>Welcome</h1>
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <LoginButton />
         <Button
@@ -32,7 +32,7 @@ export function Landing() {
         </Button>
         <Button
           sx={{ marginBottom: '10px' }}
-          onClick={() => navigate('analyze')}
+          onClick={() => navigate('dashboard')}
           variant="contained"
         >
           continue as guest
