@@ -26,7 +26,6 @@ export function Form() {
     homeValue,
     capRate,
   } = state
-  const [address, setAddress] = useState(null)
 
   const reg = new RegExp('^[0-9]+$')
 
@@ -127,7 +126,7 @@ export function Form() {
   }
 
   const handleSave = () => {
-    console.log(state, address)
+    console.log(state)
   }
 
   return (
@@ -174,17 +173,6 @@ export function Form() {
         />
 
         <Typography mt={2}>Cap Rate: {capRate}</Typography>
-      </Box>
-
-      <Box sx={{ marginBottom: '20px' }}>
-        <Typography mt={2}>Property location</Typography>
-        <GooglePlacesAutocomplete
-          apiKey={process.env.REACT_APP_PLACES_API_KEY}
-          selectProps={{
-            address,
-            onChange: (a: any) => setAddress(a.label),
-          }}
-        />
       </Box>
 
       <Button onClick={() => console.log('link')} variant="outlined">

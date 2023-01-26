@@ -1,11 +1,11 @@
-import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
-import { useNavigate } from 'react-router-dom'
 import pic from '../images/landing.jpg'
-import { LoginButton } from '.'
+import Typography from '@mui/material/Typography'
+import GooglePlacesAutocomplete from 'react-google-places-autocomplete'
+import { useState } from 'react'
 
 export function Landing() {
-  const navigate = useNavigate()
+  const [address, setAddress] = useState(null)
 
   return (
     <Box
@@ -17,26 +17,26 @@ export function Landing() {
         backgroundPosition: 'center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
-        height: '94vh',
+        height: '87vh',
       }}
     >
-      <h1>Welcome</h1>
-      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-        <LoginButton />
-        <Button
-          sx={{ marginBottom: '10px' }}
-          onClick={() => navigate('analyze')}
-          variant="contained"
+      <Box sx={{ marginBottom: '20px' }}>
+        <Typography
+          mt={5}
+          variant="h3"
+          sx={{
+            marginBottom: '1rem',
+          }}
         >
-          sign Up
-        </Button>
-        <Button
-          sx={{ marginBottom: '10px' }}
-          onClick={() => navigate('dashboard')}
-          variant="contained"
-        >
-          continue as guest
-        </Button>
+          Search property to analyze
+        </Typography>
+        <GooglePlacesAutocomplete
+          apiKey={process.env.REACT_APP_PLACES_API_KEY}
+          selectProps={{
+            address,
+            onChange: (a: any) => setAddress(a.label),
+          }}
+        />
       </Box>
     </Box>
   )
