@@ -3,6 +3,7 @@ import pic from '../images/landing.jpg'
 import Typography from '@mui/material/Typography'
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete'
 import { useState } from 'react'
+import { Form } from './Form'
 
 export function Landing() {
   const [address, setAddress] = useState(null)
@@ -13,14 +14,15 @@ export function Landing() {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        backgroundImage: `url(${pic})`,
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-        height: '87vh',
+        // backgroundImage: `url(${pic})`,
+        // backgroundPosition: 'center',
+        // backgroundSize: 'cover',
+        // backgroundRepeat: 'no-repeat',
+        // backgroundAttachment: 'fixed',
+        // height: '100vh',
       }}
     >
-      <Box sx={{ marginBottom: '20px' }}>
+      <Box sx={{ marginTop: '3rem' }}>
         <Typography
           mt={5}
           variant="h3"
@@ -38,6 +40,8 @@ export function Landing() {
           }}
         />
       </Box>
+
+      {address && <Form />}
     </Box>
   )
 }
