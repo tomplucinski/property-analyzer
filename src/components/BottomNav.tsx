@@ -3,10 +3,11 @@ import Box from '@mui/material/Box'
 import CssBaseline from '@mui/material/CssBaseline'
 import BottomNavigation from '@mui/material/BottomNavigation'
 import BottomNavigationAction from '@mui/material/BottomNavigationAction'
-import RestoreIcon from '@mui/icons-material/Restore'
 import FavoriteIcon from '@mui/icons-material/Favorite'
-import ArchiveIcon from '@mui/icons-material/Archive'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+import TroubleshootIcon from '@mui/icons-material/Troubleshoot'
 import Paper from '@mui/material/Paper'
+import { Link } from 'react-router-dom'
 
 export function BottomNav() {
   const [value, setValue] = useState(0)
@@ -26,9 +27,30 @@ export function BottomNav() {
             setValue(newValue)
           }}
         >
-          <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-          <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-          <BottomNavigationAction label="Archive" icon={<ArchiveIcon />} />
+          <BottomNavigationAction
+            label="Analyze"
+            icon={
+              <Link to="/" style={{ color: 'inherit' }}>
+                <TroubleshootIcon />
+              </Link>
+            }
+          />
+          <BottomNavigationAction
+            label="Saved"
+            icon={
+              <Link to="saved" style={{ color: 'inherit' }}>
+                <FavoriteIcon />
+              </Link>
+            }
+          />
+          <BottomNavigationAction
+            label="Account"
+            icon={
+              <Link to="account" style={{ color: 'inherit' }}>
+                <AccountCircleIcon />
+              </Link>
+            }
+          />
         </BottomNavigation>
       </Paper>
     </Box>

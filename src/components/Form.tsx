@@ -130,55 +130,66 @@ export function Form() {
   }
 
   return (
-    <Box component="form" sx={{ m: 1, width: '25ch' }}>
-      <Box sx={{ marginBottom: '20px' }}>
-        <TextField
-          id="outlined-basic"
-          label="Property income"
-          variant="outlined"
-          onChange={handleIncomeChange}
-        />
-        <TextField
-          id="outlined-basic"
-          label="Property expenses"
-          variant="outlined"
-          onChange={handleExpensesChange}
-        />
-        <Typography mt={2}>Net Operating Income: {noi}</Typography>
-      </Box>
+    <Box
+      component="form"
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        marginTop: '1.5rem',
+      }}
+    >
+      <TextField
+        sx={{ marginTop: '1rem' }}
+        id="outlined-basic"
+        label="Property income"
+        variant="outlined"
+        onChange={handleIncomeChange}
+      />
+      <TextField
+        sx={{ marginTop: '1rem' }}
+        id="outlined-basic"
+        label="Property expenses"
+        variant="outlined"
+        onChange={handleExpensesChange}
+      />
+      <Typography sx={{ marginTop: '1rem' }}>
+        Net Operating Income: {noi}
+      </Typography>
 
-      <Box sx={{ marginBottom: '20px' }}>
-        <TextField
-          id="outlined-basic"
-          label="Debt payments"
-          variant="outlined"
-          onChange={handleDebtChange}
-        />
-        <TextField
-          id="outlined-basic"
-          label="CapEx payments"
-          variant="outlined"
-          onChange={handleCapExChange}
-        />
+      <TextField
+        sx={{ marginTop: '1rem' }}
+        id="outlined-basic"
+        label="Debt payments"
+        variant="outlined"
+        onChange={handleDebtChange}
+      />
+      <TextField
+        sx={{ marginTop: '1rem' }}
+        id="outlined-basic"
+        label="CapEx payments"
+        variant="outlined"
+        onChange={handleCapExChange}
+      />
+      <Typography sx={{ marginTop: '1rem' }}>
+        Monthly Cash Flow: {cashFlow}
+      </Typography>
 
-        <Typography mt={2}>Monthly Cash Flow: {cashFlow}</Typography>
-      </Box>
+      <TextField
+        sx={{ marginTop: '1rem' }}
+        id="outlined-basic"
+        label="Home market value"
+        variant="outlined"
+        onChange={handleHomeValueChange}
+      />
 
-      <Box sx={{ marginBottom: '20px' }}>
-        <TextField
-          id="outlined-basic"
-          label="Home market value"
-          variant="outlined"
-          onChange={handleHomeValueChange}
-        />
+      <Typography sx={{ marginTop: '1rem' }}>Cap Rate: {capRate}</Typography>
 
-        <Typography mt={2}>Cap Rate: {capRate}</Typography>
-      </Box>
-
-      <Button onClick={() => console.log('link')} variant="outlined">
-        Add link
-      </Button>
-      <Button onClick={handleSave} variant="contained">
+      <Button
+        sx={{ marginTop: '1rem' }}
+        onClick={handleSave}
+        variant="contained"
+      >
         Save analysis
       </Button>
     </Box>
