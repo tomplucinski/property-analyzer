@@ -8,6 +8,10 @@ import { Form } from './Form'
 export function Landing() {
   const [address, setAddress] = useState(null)
 
+  const handleReset = () => {
+    setAddress(null)
+  }
+
   return (
     <Box
       sx={{
@@ -41,7 +45,7 @@ export function Landing() {
         />
       </Box>
 
-      {address && <Form />}
+      {address && <Form handleReset={handleReset} />}
     </Box>
   )
 }

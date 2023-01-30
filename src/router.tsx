@@ -4,7 +4,7 @@ import {
   TopAppBar,
   BottomNav,
   Landing,
-  Saved,
+  SavedHomesList,
   Account,
 } from './components'
 import { ThemeProvider } from '@mui/material'
@@ -18,7 +18,7 @@ export function Router() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/" element={<Form />} />
-          <Route path="saved" element={<Saved />} />
+          <Route path="saved" element={<SavedHomesList />} />
           <Route path="account" element={<Account />} />
         </Routes>
         <BottomNav />
