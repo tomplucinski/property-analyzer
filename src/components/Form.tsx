@@ -4,8 +4,14 @@ import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete'
+import FormControl from '@mui/material/FormControl'
+import InputLabel from '@mui/material/InputLabel'
+import FormHelperText from '@mui/material/FormHelperText'
+import Input from '@mui/material/Input'
+import ButtonGroup from './ButtonGroup'
+import { ButtonColors } from './types'
 
-export function Form() {
+export function Form({ handleReset }: any) {
   const [state, setState] = useState({
     income: 0,
     expenses: 0,
@@ -139,59 +145,68 @@ export function Form() {
         marginTop: '1.5rem',
       }}
     >
-      <TextField
-        sx={{ marginTop: '1rem' }}
-        id="outlined-basic"
-        label="Property income"
-        variant="outlined"
-        onChange={handleIncomeChange}
-      />
-      <TextField
-        sx={{ marginTop: '1rem' }}
-        id="outlined-basic"
-        label="Property expenses"
-        variant="outlined"
-        onChange={handleExpensesChange}
-      />
+      <FormControl>
+        <TextField
+          sx={{ marginTop: '1rem' }}
+          id="outlined-basic"
+          label="Property income"
+          variant="outlined"
+          onChange={handleIncomeChange}
+        />
+        <TextField
+          sx={{ marginTop: '1rem' }}
+          id="outlined-basic"
+          label="Property expenses"
+          variant="outlined"
+          onChange={handleExpensesChange}
+        />
+
+        <TextField
+          sx={{ marginTop: '1rem' }}
+          id="outlined-basic"
+          label="Debt payments"
+          variant="outlined"
+          onChange={handleDebtChange}
+        />
+        <TextField
+          sx={{ marginTop: '1rem' }}
+          id="outlined-basic"
+          label="CapEx payments"
+          variant="outlined"
+          onChange={handleCapExChange}
+        />
+
+        <TextField
+          sx={{ marginTop: '1rem' }}
+          id="outlined-basic"
+          label="Home market value"
+          variant="outlined"
+          onChange={handleHomeValueChange}
+        />
+      </FormControl>
+
       <Typography sx={{ marginTop: '1rem' }}>
         Net Operating Income: {noi}
       </Typography>
 
-      <TextField
-        sx={{ marginTop: '1rem' }}
-        id="outlined-basic"
-        label="Debt payments"
-        variant="outlined"
-        onChange={handleDebtChange}
-      />
-      <TextField
-        sx={{ marginTop: '1rem' }}
-        id="outlined-basic"
-        label="CapEx payments"
-        variant="outlined"
-        onChange={handleCapExChange}
-      />
       <Typography sx={{ marginTop: '1rem' }}>
         Monthly Cash Flow: {cashFlow}
       </Typography>
 
-      <TextField
-        sx={{ marginTop: '1rem' }}
-        id="outlined-basic"
-        label="Home market value"
-        variant="outlined"
-        onChange={handleHomeValueChange}
-      />
-
       <Typography sx={{ marginTop: '1rem' }}>Cap Rate: {capRate}</Typography>
 
-      <Button
-        sx={{ marginTop: '1rem' }}
-        onClick={handleSave}
-        variant="contained"
-      >
-        Save analysis
-      </Button>
+      <ButtonGroup
+        leftButtonProps={{
+          text: 'reset',
+          color: ButtonColors.PRIMARY,
+          action: handleReset,
+        }}
+        rightButtonProps={{
+          text: 'save',
+          color: ButtonColors.PRIMARY,
+          action: handleSave,
+        }}
+      />
     </Box>
   )
 }
