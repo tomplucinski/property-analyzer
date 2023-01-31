@@ -3,14 +3,14 @@ import pic from '../images/landing.jpg'
 import Typography from '@mui/material/Typography'
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete'
 import { useState } from 'react'
-import { Form } from './Form'
+import { ButtonColors } from './types'
+import Button from '@mui/material/Button'
+import EastIcon from '@mui/icons-material/East'
+import { useNavigate } from 'react-router-dom'
 
 export function Landing() {
   const [address, setAddress] = useState(null)
-
-  const handleReset = () => {
-    setAddress(null)
-  }
+  const navigate = useNavigate()
 
   return (
     <Box
@@ -26,7 +26,7 @@ export function Landing() {
         // height: '100vh',
       }}
     >
-      <Box sx={{ marginTop: '3rem' }}>
+      <Box sx={{ marginTop: '2rem' }}>
         <Typography
           mt={5}
           variant="h3"
@@ -45,7 +45,17 @@ export function Landing() {
         />
       </Box>
 
-      {address && <Form handleReset={handleReset} />}
+      {address && (
+        <Button
+          color={ButtonColors.PRIMARY}
+          variant="contained"
+          sx={{ mt: 3, ml: 1, margin: '3rem' }}
+          onClick={() => navigate('analyze')}
+        >
+          Analyze {address}
+          <EastIcon />
+        </Button>
+      )}
     </Box>
   )
 }
