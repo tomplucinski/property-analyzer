@@ -11,7 +11,7 @@ import Input from '@mui/material/Input'
 import ButtonGroup from './ButtonGroup'
 import { ButtonColors } from './types'
 
-export function Form({ handleReset }: any) {
+export function Form() {
   const [state, setState] = useState({
     income: 0,
     expenses: 0,
@@ -142,7 +142,7 @@ export function Form({ handleReset }: any) {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        marginTop: '1.5rem',
+        marginTop: '2rem',
       }}
     >
       <FormControl>
@@ -197,9 +197,9 @@ export function Form({ handleReset }: any) {
 
       <ButtonGroup
         leftButtonProps={{
-          text: 'reset',
+          text: 'clear',
           color: ButtonColors.PRIMARY,
-          action: handleReset,
+          action: () => console.log('clear form'),
         }}
         rightButtonProps={{
           text: 'save',
