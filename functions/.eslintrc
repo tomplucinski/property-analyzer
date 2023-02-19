@@ -1,0 +1,24 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "parserOptions": {
+    "project": ["tsconfig.json", "tsconfig.dev.json"],
+    "tsconfigRootDir":
+      "/users/tplucinski/dev/personal/property-analyzer/functions/",
+    "sourceType": "module"
+  },
+  "ignorePatterns": [
+    "/lib/**/*" // Ignore built files.
+  ],
+  "rules": {
+    "quotes": ["error", "single"],
+    "indent": "off"
+  }
+}
