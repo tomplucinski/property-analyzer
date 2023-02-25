@@ -9,9 +9,9 @@
     "prettier"
   ],
   "parserOptions": {
-    "project": ["tsconfig.json", "tsconfig.dev.json"],
+    "project": ["tsconfig.json"],
     "tsconfigRootDir":
-      "/users/tplucinski/dev/personal/property-analyzer/functions/",
+      "/users/tplucinski/dev/personal/property-analyzer/server/functions",
     "sourceType": "module"
   },
   "ignorePatterns": [
