@@ -21,9 +21,9 @@ TBD
 
 1. Navigate to client directory `cd client`
 2. Build code with most recent changes `npm run build`
-3. Deploy to Firebase hosted service `firebase deploy --only hosting`
+3. Deploy to Firebase hosted service `npm run deploy`
 
 ## Deploy functions
 
-1. Navigate to server directory `cd server`
-2. Deploy to Firebase functions `firebase deploy --only functions`
+1. Navigate to functions directory `cd functions`
+2. Deploy to Firebase functions `npm run deploy`
