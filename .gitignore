@@ -1,4 +1,4 @@
-node_modules
+node_modules/
 .DS_Store
 .vscode
 coverage
@@ -6,3 +6,7 @@ build
 npm-debug.log*
 .env
 .firebase
+firebase-debug.log*
+functions/lib/**/*.js
+functions/lib/**/*.js.map
+typings/

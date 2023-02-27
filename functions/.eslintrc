@@ -11,7 +11,7 @@
   "parserOptions": {
     "project": ["tsconfig.json"],
     "tsconfigRootDir":
-      "/users/tplucinski/dev/personal/property-analyzer/server/functions",
+      "/users/tplucinski/dev/personal/property-analyzer/functions",
     "sourceType": "module"
   },
   "ignorePatterns": [
