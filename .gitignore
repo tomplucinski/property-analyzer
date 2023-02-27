@@ -9,4 +9,5 @@ npm-debug.log*
 firebase-debug.log*
 functions/lib/**/*.js
 functions/lib/**/*.js.map
+functions/ui-debug.log
 typings/
